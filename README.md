@@ -1,4 +1,4 @@
-# VehiclesAPI-Project
+# Vehicles API
 
 ### Instructions
 
