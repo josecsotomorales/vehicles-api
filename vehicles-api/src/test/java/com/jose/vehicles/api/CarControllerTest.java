@@ -81,6 +81,21 @@ public class CarControllerTest {
                 .andExpect(status().isCreated());
     }
 
+    /**
+     * Tests for successful update of new car in the system
+     * @throws Exception when car update fails in the system
+     */
+    @Test
+    public void updateCar() throws Exception {
+        Car car = getCar();
+        car.getDetails().setModelYear(2017);
+        mvc.perform(
+                put(new URI("/cars/2"))
+                        .content(json.write(car).getJson())
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+                        .accept(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk());
+    }
 
     /**
      * Tests if the read operation appropriately returns a list of vehicles.
