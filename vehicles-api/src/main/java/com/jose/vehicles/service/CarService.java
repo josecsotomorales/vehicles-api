@@ -64,10 +64,10 @@ public class CarService {
      */
     public Car save(Car car) {
         if (car.getId() != null) {
-            System.out.println("THE ID"+car.getId());
             return repository.findById(car.getId())
                     .map(carToBeUpdated -> {
                         carToBeUpdated.setDetails(car.getDetails());
+                        carToBeUpdated.setCondition(car.getCondition());
                         carToBeUpdated.setLocation(car.getLocation());
                         return repository.save(carToBeUpdated);
                     }).orElseThrow(CarNotFoundException::new);
